@@ -41,7 +41,7 @@ IAE *CAEFactory::GetEngine()
 bool CAEFactory::LoadEngine()
 {
 // oskwon
-#if defined(TARGET_DVBBOX)
+#if defined(TARGET_DVBBOX) || defined(TARGET_DVBBOXARM)
   return true;
 #else
   return CAEFactory::LoadEngine(AE_ENGINE_ACTIVE);
@@ -84,7 +84,7 @@ void CAEFactory::UnLoadEngine()
 bool CAEFactory::StartEngine()
 {
 // oskwon
-#if defined(TARGET_DVBBOX)
+#if defined(TARGET_DVBBOX) || defined(TARGET_DVBBOXARM)
   return true;
 #else
   if (!AE)

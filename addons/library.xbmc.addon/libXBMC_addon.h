@@ -57,6 +57,8 @@
 #else
 #define ADDON_HELPER_ARCH       "mipsel-linux"
 #endif
+#elif defined(TARGET_DVBBOXARM) // oskwon
+#define ADDON_HELPER_ARCH       "arm"
 #else
 #define ADDON_HELPER_ARCH       "i486-linux"
 #endif

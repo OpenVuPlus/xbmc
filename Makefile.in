@@ -307,9 +307,9 @@ CHECK_LIBS = xbmc/filesystem/test/filesystemTest.a \
              xbmc/threads/test/threadTest.a \
              xbmc/interfaces/python/test/pythonSwigTest.a \
              xbmc/test/xbmc-test.a
-ifeq ($(or $(findstring mips,@ARCH@)),)
-CHECK_LIBS+=xbmc/cores/AudioEngine/Sinks/test/AESinkTest.a
-endif
+#ifeq ($(or $(findstring mips,@ARCH@)),)
+#CHECK_LIBS+=xbmc/cores/AudioEngine/Sinks/test/AESinkTest.a
+#endif
 
 ifeq (@USE_WAYLAND@,1)
 CHECK_LIBS += xbmc/windowing/tests/wayland/test_wayland.a
@@ -544,10 +544,8 @@ xbmc.bin: $(OBJSXBMC) $(DYNOBJSXBMC) $(NWAOBJSXBMC) $(MAINOBJS)
 
 ifeq ($(findstring osx,@ARCH@), osx)
 	$(SILENT_LD) $(CXX) $(LDFLAGS) -o xbmc.bin $(MAINOBJS) -Wl,-all_load,-ObjC $(MAINOBJS) $(DYNOBJSXBMC) $(NWAOBJSXBMC) $(OBJSXBMC) $(LIBS) -rdynamic
-else ifeq ($(findstring mips,@ARCH@), mips) # oskwon
-	$(SILENT_LD) $(CXX) $(CXXFLAGS) $(LDFLAGS) -o xbmc.bin $(MAINOBJS) -Wl,--start-group $(MAINOBJS) $(DYNOBJSXBMC) $(OBJSXBMC) -Wl,--end-group $(NWAOBJSXBMC) $(LIBS) -rdynamic xbmc/windowing/egl/gles_init.a -ldvb_base -lnxpl -ldvb_client
 else
-	$(SILENT_LD) $(CXX) $(CXXFLAGS) $(LDFLAGS) -o xbmc.bin $(MAINOBJS) -Wl,--start-group $(MAINOBJS) $(DYNOBJSXBMC) $(OBJSXBMC) -Wl,--end-group $(NWAOBJSXBMC) $(LIBS) -rdynamic
+	$(SILENT_LD) $(CXX) $(CXXFLAGS) $(LDFLAGS) -o xbmc.bin $(MAINOBJS) -Wl,--start-group $(MAINOBJS) $(DYNOBJSXBMC) $(OBJSXBMC) -Wl,--end-group $(NWAOBJSXBMC) $(LIBS) -rdynamic xbmc/windowing/egl/gles_init.a -ldvb_base -lnxpl -ldvb_client
 endif
 
 xbmc-xrandr: xbmc-xrandr.c

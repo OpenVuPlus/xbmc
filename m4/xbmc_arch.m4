@@ -55,5 +55,9 @@ case $use_platform in
   dvbbox)
      AC_SUBST(ARCH_DEFINES, "-DTARGET_POSIX -DTARGET_LINUX -D_LINUX -D_MIPSEL -DTARGET_DVBBOX")
      ;;
+# oskwon
+  dvbboxarm)
+     AC_SUBST(ARCH_DEFINES, "-DTARGET_POSIX -DTARGET_LINUX -D_LINUX -DTARGET_DVBBOXARM")
+     ;;
 esac
 ])

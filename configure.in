@@ -698,7 +698,8 @@ case $host in
      use_sdl=no
      use_x11=no
      use_wayland=no
-     use_static_ffmpeg=yes
+#oskwon : yes -> no
+     use_static_ffmpeg=no
      ;;
   arm*-*linux-android*)
      target_platform=target_android
@@ -779,6 +780,24 @@ case $use_platform in
      use_static_ffmpeg=no
      AC_DEFINE(HAS_EGLGLES, [1], [Define if supporting EGL based GLES Framebuffer])
      USE_DVBBOX_EGL=1
+     CFLAGS="$CFLAGS"
+     CXXFLAGS="$CXXFLAGS"
+     ;;
+# oskwon
+  dvbboxarm)
+     target_platform=target_dvbbox
+     ARCH="arm"
+     use_arch="arm"
+     ffmpeg_target_os=linux
+     use_joystick=no
+     use_gles=yes
+     use_sdl=no
+     use_x11=no
+     use_alsa="no"
+     use_wayland=no
+     use_static_ffmpeg=no
+     AC_DEFINE(HAS_EGLGLES, [1], [Define if supporting EGL based GLES Framebuffer])
+     USE_DVBBOXARM_EGL=1
      CFLAGS="$CFLAGS"
      CXXFLAGS="$CXXFLAGS"
      ;;
@@ -2713,6 +2732,7 @@ AC_SUBST(HOGWEED_ALL_LIBS)
 AC_SUBST(VORBISENC_ALL_LIBS)
 # oskwon
 AC_SUBST(USE_DVBBOX_EGL)
+AC_SUBST(USE_DVBBOXARM_EGL)
 
 # pushd and popd are not available in other shells besides bash, so implement
 # our own pushd/popd functions

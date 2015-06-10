@@ -2438,7 +2438,7 @@ bool CApplication::OnKey(const CKey& key)
           useKeyboard = true;
       }
     }
-#if defined(TARGET_DVBBOX) // oskwon
+#if defined(TARGET_DVBBOX) || defined(TARGET_DVBBOXARM) // oskwon
 //    printf("----->> %x\n", key.GetVKey());
     switch(key.GetVKey())
     {

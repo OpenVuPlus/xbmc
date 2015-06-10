@@ -182,7 +182,7 @@
 #define HAS_LINUX_EVENTS
 #endif
 #define HAS_LINUX_NETWORK
-#if !defined(TARGET_DVBBOX) // oskwon
+#if !defined(TARGET_DVBBOX) && !defined(TARGET_DVBBOXARM) // oskwon
 #define HAS_LIRC
 #endif /*TARGET_DVBBOX*/
 #ifdef HAVE_LIBPULSE

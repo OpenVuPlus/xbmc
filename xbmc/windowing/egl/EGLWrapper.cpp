@@ -29,7 +29,7 @@
 #include "EGLNativeTypeWayland.h"
 #include "EGLWrapper.h"
 
-#if defined(TARGET_DVBBOX) // oskwon
+#if defined(TARGET_DVBBOX) || defined(TARGET_DVBBOXARM) // oskwon
 #	include "EGLNativeTypeDvbBox.h"
 #endif
 
@@ -87,7 +87,7 @@ bool CEGLWrapper::Initialize(const std::string &implementation)
   if ((nativeGuess = CreateEGLNativeType<CEGLNativeTypeWayland>(implementation)) ||
       (nativeGuess = CreateEGLNativeType<CEGLNativeTypeAndroid>(implementation)) ||
       (nativeGuess = CreateEGLNativeType<CEGLNativeTypeAmlogic>(implementation)) ||
-#if defined(TARGET_DVBBOX) // oskwon
+#if defined(TARGET_DVBBOX) || defined(TARGET_DVBBOXARM)// oskwon
       (nativeGuess = CreateEGLNativeType<CEGLNativeTypeDvbBox>(implementation)) ||
 #endif
       (nativeGuess = CreateEGLNativeType<CEGLNativeTypeRaspberryPI>(implementation)))
